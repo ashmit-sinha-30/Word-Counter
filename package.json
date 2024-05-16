@@ -1,6 +1,6 @@
 {
+  "homepage": "https://ashmit-sinha-30.github.io/Word-Counter",
   "name": "my-app",
-  "homepage": "https://ashmit-sinha-30.github.io/Word-Counter/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
