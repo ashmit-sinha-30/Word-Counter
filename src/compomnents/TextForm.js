@@ -46,20 +46,20 @@ export default function TextForm(prop) {
                 <h3>{prop.heading}</h3>
                 <textarea className="form-control" id="myBox" rows="8" value={text} onChange={honChange} style={{backgroundColor: prop.mode==='dark'?'#445069':'white',color: prop.mode==='dark'?'white':'black'}}></textarea>
             </div>
-            <button className=" btn btn-primary my-3 mx-1" onClick={upCase}>Convert to Uppercase</button>
-            <button className=" btn btn-primary my-3 mx-1" onClick={loCase}>Convert to Lowercase</button>
-            <button className=" btn btn-primary my-3 mx-1" onClick={clearCase}>Clear Text</button>
-            <button className=" btn btn-primary my-3 mx-1" onClick={copyTxt}>Copy Text</button>
-            <button className=" btn btn-primary my-3 mx-1" onClick={remExtraSpace}>Remove Extra Space</button>
+            <button disabled={text.length===0} className=" btn btn-primary my-3 mx-1" onClick={upCase}>Convert to Uppercase</button>
+            <button disabled={text.length===0} className=" btn btn-primary my-3 mx-1" onClick={loCase}>Convert to Lowercase</button>
+            <button disabled={text.length===0} className=" btn btn-primary my-3 mx-1" onClick={clearCase}>Clear Text</button>
+            <button disabled={text.length===0} className=" btn btn-primary my-3 mx-1" onClick={copyTxt}>Copy Text</button>
+            <button disabled={text.length===0} className=" btn btn-primary my-3 mx-1" onClick={remExtraSpace}>Remove Extra Space</button>
         </form>
     </div>
     <div className="container my-3">
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>{text.split(".").length} sentences</p>
-        <p>On average, it takes {0.008*text.split(" ").length} minutes to read</p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+        <p>{text.split(".").filter((element)=>{return element.length!==0}).length} sentences</p>
+        <p>On average, it takes {0.008*text.split(/\s+/).filter((element)=>{return element.length!==0}).length} minutes to read</p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:'Enter some text in the box to preview here.'}</p>
+        <p>{text.length>0?text:'Nothing to preview!'}</p>
     </div>
 
     </>
